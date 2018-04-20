@@ -7,7 +7,21 @@ P 37: exercises 2.3-1, 2.3-3, 2.3-4, 2.3-6 Problems 2-2, 2-3 clarification of pr
 
 ** 1.2-2]
     For which values of n does insertion sort beat merge sort?
-        Maybe I am doing the math wrong but it seems like for all n merge sort beats insertion. Although I thought there was a cross over point where insertion sort beats merge until the number gets high enough?
+    insertion O(8∙n²) and merge O(64∙nlogn)
+    
+    8∙8² < 64∙8log(8)
+    512 < 1024
+    
+    8∙40² < 64∙40log(40)
+    12800 < 13624.13568
+    
+    8∙43² < 64∙43log(43)
+    14792 < 14933.08128
+    
+    8∙44² < 64∙44log(44)
+    15488 > 15373.760512
+
+    43
 
 1.2-3]
     When n == 15
@@ -24,51 +38,64 @@ P 1-1]
         <3, 26, 41, 52>     <9, 38, 49, 57>
         <3, 9, 26, 38, 41, 49, 52, 57>
 
-** 2.3-3]
-    Ask Sherri to help with this. Also I am assuming base 2 :P
-             
+2.3-3]     
             | 2             if n = 2
     T(n) = {
             | 2T(n/2) + n   if n = 2^k, for k > 1
+    Inductive Hypothesis
 
-    is T(n) = n lg(n)
+    I will be using the inductuve hypothesis
+
+    Proving that the T(n) second case works:
+    T(2³) = 2T(2³/2) + 2³
+          = 2T(4) + 8
+          = 2(2T(4/2) + 4) + 8)
+          = 2(2∙2 + 4) + 8
+          = 2(4 + 4) + 8
+          = 2(8) + 8
+          = 24
+
+    2³log(2³)
+          = 8∙3
+          = 24
     
-    base case n = 2^2
-    2T(4/2) + 4
-    2(2) + 4
-    8
-    4 lg(4) = 8
+    Base Case:
+    T(2¹) = 2
+    2log(2) = 2∙1
+            = 2
 
-    So now I make my assumption. I assume that 2^k is true so:
+    Inductive Step:
+    Assume T(2^k) = 2^klog(2^k)
+    then T(2^(k+1)) = 2^(k+1)log(2^(k+1))
 
-              | 2                   for k = 1
-    T(2^k) = {
-              | 2T(2^k/2) + 2^k     for k > 1
+      2T(2^(k+1)/2) + 2^(k+1)
+    = 2T(2^k) + 2^(k+1)
+    = 2(2^klog(2^k)) + 2^(k+1)
+    = 2(2^k∙k) + 2^(k+1)
+    = 2^(k+1)k + 2^(k+1)
+    = 2^(k+1)(k + 1)
+    = 2^(k+1)log(2^(k+1))
 
-    is 2^k lg(2^k)
-
-    So now I use induction (I think? I don't feel I know what I am doing) and prove for k + 1
-
-    2T(2^(k + 1)/2) + 2^(k + 1) = 2^(k + 1) lg(2^(k + 1))
-
-    2T(2^(k + 1)/2 /2) :(
-
-** 2.3-4]
-    Ask Sherri about this sentence and what it means:
+   2.3-4]
     Write a recurrence for the worst-case running time of this recursive version of insertion sort.
+    T(n) = T(n-1) + n
 
 2.3-6]
     Yes. I think.
        You'd have to recursively find the spot where it needs to go but then you would need to linearly move all the array elements to get the new one in place unless you have a linked list. 
 
 ** P 2-2]
-    a) The loop envariant?
+    a) The loop envariant
     b) 
-    Initialization: I am not sure what it means by proving that initialization is true before run. My only understanding is that it is true because that's the way the loop works. If the list was 2 length long then i = 1 and j would work from 2 to 1
+           | 1              if n = 1
+    T(n) = { 
+           | T(n - 1) + n   if n > 1
 
-    Maintenance: This is the most important part that I need to prove. Talk to Sherri about this
+    is T(n) = n²
 
-    Termination: Termination happens when i = length - 1 and j has run down to i + 1 at that time?
+    T(2) = T(2 - 1) + 2
+         = 
 
 ** P 2-3]
-    I am at a serious loss. Talk to Sherri
+    a) O(n) from lines 1 - 3
+
