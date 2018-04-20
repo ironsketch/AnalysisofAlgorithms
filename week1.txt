@@ -1,0 +1,74 @@
+Analysis Algorithms
+Spring 
+Michelle Bergin
+Week 1 HW
+P 14: exercises 1.2-2, 1.2-3, Problem 1-1
+P 37: exercises 2.3-1, 2.3-3, 2.3-4, 2.3-6 Problems 2-2, 2-3 clarification of problem 2-3
+
+** 1.2-2]
+    For which values of n does insertion sort beat merge sort?
+        Maybe I am doing the math wrong but it seems like for all n merge sort beats insertion. Although I thought there was a cross over point where insertion sort beats merge until the number gets high enough?
+
+1.2-3]
+    When n == 15
+
+P 1-1]
+    Comparison of running times For each function f .n/ and time t in the following table, determine the largest size n of a problem that can be solved in time t, assuming that the algorithm to solve the problem takes f .n/ microseconds.
+
+2.3-1]
+    Using Figure 2.4 as a model, illustrate the operation of merge sort on the array A <3, 41, 52, 26, 38, 57, 9, 49>
+        <3, 41, 52, 26>     <38, 57, 9, 49>
+        <3, 41>     <52, 26>    <38, 57>    <9, 49>
+        <3>     <41>    <52>    <26>    <38>    <57>    <9>     <49>
+        <3, 41>     <26, 52>    <38, 57>    <9, 49>
+        <3, 26, 41, 52>     <9, 38, 49, 57>
+        <3, 9, 26, 38, 41, 49, 52, 57>
+
+** 2.3-3]
+    Ask Sherri to help with this. Also I am assuming base 2 :P
+             
+            | 2             if n = 2
+    T(n) = {
+            | 2T(n/2) + n   if n = 2^k, for k > 1
+
+    is T(n) = n lg(n)
+    
+    base case n = 2^2
+    2T(4/2) + 4
+    2(2) + 4
+    8
+    4 lg(4) = 8
+
+    So now I make my assumption. I assume that 2^k is true so:
+
+              | 2                   for k = 1
+    T(2^k) = {
+              | 2T(2^k/2) + 2^k     for k > 1
+
+    is 2^k lg(2^k)
+
+    So now I use induction (I think? I don't feel I know what I am doing) and prove for k + 1
+
+    2T(2^(k + 1)/2) + 2^(k + 1) = 2^(k + 1) lg(2^(k + 1))
+
+    2T(2^(k + 1)/2 /2) :(
+
+** 2.3-4]
+    Ask Sherri about this sentence and what it means:
+    Write a recurrence for the worst-case running time of this recursive version of insertion sort.
+
+2.3-6]
+    Yes. I think.
+       You'd have to recursively find the spot where it needs to go but then you would need to linearly move all the array elements to get the new one in place unless you have a linked list. 
+
+** P 2-2]
+    a) The loop envariant?
+    b) 
+    Initialization: I am not sure what it means by proving that initialization is true before run. My only understanding is that it is true because that's the way the loop works. If the list was 2 length long then i = 1 and j would work from 2 to 1
+
+    Maintenance: This is the most important part that I need to prove. Talk to Sherri about this
+
+    Termination: Termination happens when i = length - 1 and j has run down to i + 1 at that time?
+
+** P 2-3]
+    I am at a serious loss. Talk to Sherri
