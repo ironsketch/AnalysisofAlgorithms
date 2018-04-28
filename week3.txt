@@ -1,0 +1,89 @@
+Analysis Algorithms
+Spring
+Michelle Bergin
+Week 3-4 HW
+P 52: exercises 3.1-1, 3.1-2
+P 60: exercises 3.2-1, 3.2-2
+Ch 3: problems 3-1, 3-3, 3-4
+Ch 4: problems 4-1, 4-2, 4-4
+
+**3.1-1)
+    Let f(n) and g(n) be asymptotically nonnegative functions. Using the basic definition of Θ-notation, prove that max(f(n), g(n)) = Θ(f(n) + g(n))
+    From Θ definition, Θ(g(n)) = {f(n) : there exist positive constants c1, c2, and n0 such that 
+                                        0 ≤ c1g(n) ≤ f(n) ≤ c2g(n) for all n ≥ n0}
+
+    c1g(n) ≤ f(n) ≤ c2g(n)
+    f(n) + g(n) ≥ f(n)
+    f(n) + g(n) ≥ g(n)
+    f(n) + g(n) ≥ max(f(n),g(n))
+
+
+**3.1-2)
+    (n + a)^b = Θ(n^b)
+    Thinking about this in my words, because we drop constants and a is a constant then Θ(f(n)) would be the highest term n^b. Θ(n^b) I am pretty sure that I need to do inequality reasoning to solve this but I am at a loss what to do.
+
+    Show that (n+a)^b = Θ(n^b)
+
+    We will need to show that this is a bound between O and Ω.
+
+    Big O (n+a)^b ≤ (c1)n^b
+    if this is true then this is true:
+    n + a ≤ (c1)n
+    if a < n then add n to both sides
+    a + n ≤ n + n
+    a + n ≤ 2n
+
+
+
+**3.2-1)
+    Show that if f(n) and g(n) are monotonically increasing functions, then so are the functions f(n) + g(n) and f(g(n)), and if f(n) and f(n) are in addition nonnegative, then f(n)∙g(n) is monotonically increasing.
+    f(m) ≤ f(n) ≤ f(n+1)
+    g(m) ≤ g(n) ≤ g(n+1)
+    which are monotonically increasing 
+    so f(n) + g(n) is also monotonically increasing 
+    same with f(n)∙g(n)
+    same with the composition
+
+3.2-2)
+    a^(log_b(c)) = c^(log_b(a))
+    c = b^k and k = log_b(c)
+    log_b(c) = x so b^x = c
+    log_b(a) = y so b^y = a
+    
+    for c^(log_b(a))
+        (b^x)^log_b(a)
+        (b^x)^log_b(b^y)
+        (b^x)^y
+        b^xy
+
+    for a^(log_b(c))
+        (b^y)^(log_b(c))
+        (b^y)^(log_b(b^x))
+        (b^y)^x
+        b^yx
+
+3-1)
+    
+
+3-3)
+    1, n^(1/log(n), n,  log*(log(n)), log(log*(n)), n², n³, log(n)!, n!, (n + 1)!, 2^n, e^n, n∙2^n, 2^2^n, 2^2^(n+1)
+
+3-4)
+    a) f(n) = O(g(n)) implies g(n) = O(f(n))
+        let f(n) = n and g(n) = n²
+        n = O(n²) but n² ≠ O(n)
+
+    b) f(n) + g(n) = Θ(min(f(n), g(n)))
+        let f(n) = n and g(n) = n²
+        n + n² = Θ(min(n, n²))
+        n + n² = Θ(n) is not a tight bound
+
+    c) f(n) = O(g(n)) implies lg(f(n)) = O(lg(g(n))), where lg(g(n)) ≥ 1 and f(n) ≥ 1 for all sufficiently large n.
+
+    d) 
+
+4-1)
+
+4-2)
+
+4-4)
