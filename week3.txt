@@ -17,6 +17,31 @@ Ch 4: problems 4-1, 4-2, 4-4
     f(n) + g(n) ≥ g(n)
     f(n) + g(n) ≥ max(f(n),g(n))
 
+    3.1-1 - below is me looking at the teachers solution and trying to learn it)
+                | f(n) if f(n) ≥ g(n)
+        h(n) = {
+                | g(n) if f(n) < g(n)
+
+        Above is defining what max(f(n), g(n)) = Θ(f(n) + g(n)) means
+        Because these functions have to be asymptotically nonnegative (from the problem definition). We can use what I learned from the book that there has to be an n_0 that is ≥ 0 and where all n ≥ n_0 for the functions f(n) and g(n).
+        f(n) + g(n) ≥ f(n) ≥ 0
+        f(n) + g(n) ≥ g(n) ≥ 0
+        regardless of the n we choose h(n) will end up being f(n) or g(n) based on our above definition.
+        There for f(n) + g(n) ≥ h(n) ≥ 0
+        h(n) = max(f(n), g(n)) ≤ c_2(f(n) + g(n))
+        
+        *************************
+        ** ask why/how c_2 = 1 **
+        *************************
+
+        I suppose it is one because we can just choose it to be one. 
+
+        Also:
+
+        h(n) = max(f(n), g(n))
+        h(n) ≥ c_1(f(n) + g(n))/2
+        because h(n) will be the larger of either function the most that that the right hand side could be is equal to the max never more.
+        so c_1 = 1/2
 
 **3.1-2)
     (n + a)^b = Θ(n^b)
@@ -33,7 +58,13 @@ Ch 4: problems 4-1, 4-2, 4-4
     a + n ≤ n + n
     a + n ≤ 2n
 
+    I briefly glanced at the teachers solution and saw the tight bound. So here is my second attempt before reading more of her work.
 
+    assuming:
+    c_1 ∙ n^b ≤ (n + a)^b ≤ c_2 ∙ n^b
+
+    Solving for the left side
+    c_1 ...
 
 **3.2-1)
     Show that if f(n) and g(n) are monotonically increasing functions, then so are the functions f(n) + g(n) and f(g(n)), and if f(n) and f(n) are in addition nonnegative, then f(n)∙g(n) is monotonically increasing.
@@ -63,7 +94,7 @@ Ch 4: problems 4-1, 4-2, 4-4
         b^yx
 
 3-1)
-    
+    I need help on this but I re-read the chapters and I am understanding more of what they are getting it. I need help how to do this though
 
 3-3)
     1, n^(1/log(n), n,  log*(log(n)), log(log*(n)), n², n³, log(n)!, n!, (n + 1)!, 2^n, e^n, n∙2^n, 2^2^n, 2^2^(n+1)
@@ -83,7 +114,16 @@ Ch 4: problems 4-1, 4-2, 4-4
     d) 
 
 4-1)
+    a) T(n) = 2T(n/2) + n⁴      a = 2, b = 2, f(n) = n⁴
+                        n           n⁴
+                      /   \
+                   n/2    n/2       2(n/2)⁴ = n⁴/8
+                 /  \      /  \
+              n/4  n/4   n/4  n/4   4(n/4)⁴ = n⁴/64
+
+    
 
 4-2)
+    
 
 4-4)
