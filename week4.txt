@@ -1,0 +1,147 @@
+Michelle Bergin
+Analysis of Alogrithms
+
+p 166: 6.5-6 p 167: 6-1,6-2
+
+6.5-6)
+    Each exchange operation on line 5 of HEAP-INCREASE-KEY typically requires three assignments. Show how to use the idea of the inner loop of INSERTIONSORT to reduce the three assignments down to just one assignment.
+
+
+6-1)
+    BUILD-MAX-HEAP'
+    1   A.heap-size = 1
+    2   for i = 2 to A.length
+    3       MAX-HEAP-INSERT(A, A[i])
+
+    BUILD-MAX-HEAP
+    1   A.heap-size = A.length
+    2   for i = ⌊A.length/2⌋ downto 1
+    3       MAX-HEAPIFY(A,i)
+
+    a. Do the procedures BUILD-MAX-HEAP and BUILD-MAX-HEAP0 always create the same heap when run on the same input array? Prove that they do, or provide a counterexample.
+    No, I ran a simple run through of an array [1,2,3,4]
+    The first BMH above came out with this tree:
+            4
+        3       2
+    1
+
+    The second BMH came out with this pyramid:
+            4
+        2       3
+    1
+
+    The second BMH seemed to take less operations as well!
+
+    b. Show that in the worst case, BUILD-MAX-HEAP' requires Θ(nlgn) time to build an n-element heap.
+    Working through each line of BMH':
+        O(1) + O(n)∙(O(MAX-HEAP-INSERT))
+
+    Working through each line of MAX-HEAP-INSERT:
+        O(1) + O(1) + (O(HEAP-INCREASE-KEY))
+
+    Working through each line of HEAP-INCREASE-KEY:
+        O(1) + O(1) + O(lgn)
+
+    Putting it all together:
+        O(1) + O(n)(O(1) + O(1) + O(1) + O(1) + O(lgn))
+
+    Let O(1) = c
+        c + O(n)(4c + O(lgn))
+        c + 4cO(n)O(lgn)
+
+    Dropping constants we have:
+        O(nlgn)
+
+6-2)
+    A d-ary heap is like a binary heap, but (with one possible exception) non-leaf nodes have d children instead of 2 children.
+    a. How would you represent a d-ary heap in an array?
+        each level would be equal to d^level + up to d
+        [(1), (2, 3), (4, 5, 6, 7)]
+        [(1), (2, 3, 4), (5, 6, 7, 8, 9, 10, 11, 12, 13)]
+        [(1), (2, 3, 4, 5), (6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21)]
+        etc.
+
+    b. What is the height of a d-ary heap of n elements in terms of n and d?
+        appx log_d(n)
+
+    c. Give an efficient implementation of EXTRACT-MAX in a d-ary max-heap. Analyze its running time in terms of d and n.
+        (1)(23) i*2 and + 1
+        (1)(234)(56789ABCD)14(EFGHIJKLMNOPQRSTetc) 1-234, 2-567 3-89A 4-BCD, 5-EFG 6-IJK 7-LMN etc
+            (1)i*2 +012
+            2 + 0 1 2
+            (2)i*2 +123, (3)i*2 +234 (4)i*2 + 345
+            (5)i*2 +456, (6)i*2 + 567
+            (Start to count up from i-1)
+
+        (1)(2345)(6789ABCDEFGHIJKL)(22,23,24,
+            (1)
+            2 + 0123
+            (2)i*3 +0123 (3)i*3 +1234
+            (6)i*3 +4567
+            i-2
+
+        (1)(23456)(789,10,11,,12,13,14,15,16
+        i can't find the pattern :(
+
+        void MAX_HEAPIFY(heap<int> &A, int i){
+            leftChild = can't find patern
+            int largest = leftChild;
+            for(int child = leftChild; child < A.d; child++){ // Again I can't find the pattern
+                if(A[largest] < A[leftChild + child]){
+                    largest = leftChild + child;
+                }
+            }
+            if(A[largest] < A[i]){
+                largest = i;
+            }
+            if(largest != i){
+                int tmp = A[i]
+                A[i] = A[largest];
+                A[largest] = tmp;
+                MAX_HEAPIFY(A, largest);
+            }
+        }
+
+        int EXTRACT_MAX(heap<int> &A){
+            MAX = A[1];
+            A[1] = A[A.heapSize];
+            A.heapSize--;
+            MAX_HEAPIFY(A, 1);
+            return MAX;
+        }
+
+    d. Give an efficient implementation of INSERT in a d-ary max-heap. Analyze its running time in terms of d and n.
+        void INCREASE_KEY(heap<int> &A, int i, int n){
+            if(n < A[i]){
+                throw string("exception ! error");
+            }
+            A[i] = n;
+            pOfI = I can't find the pattern
+            while(i > 1 && A[pOfI] < A[i]){
+                A[i] = A[pOfI];
+                A[pOfI] = n;
+                i = pOfI;
+            }
+        }
+
+        void INSERT(heap<int> &A, int n){
+            A.heapSize++;
+            A[A.heapSize] = n;
+            INCREASE_KEY(A, A.heapSize, n);
+        }
+
+    e. Give an efficient implementation of INCREASE-KEY(A,i,k), which flags an error if k < A[i], but otherwise sets A[i] = k and then updates the d-ary maxheap structure appropriately. Analyze its running time in terms of d and n.
+        Above
+
+7.3-1 p 284: 7.4-2 p 185: 7-2, 7-4
+
+7.3-1)
+    Why do we analyze the expected running time of a randomized algorithm and not its worst-case running time?
+    From what I have read on the net, if you have a known chosen input then you are measuring your algorithm to that input. But if you have a random input everytime then you are measuring your algorithm to the overall random affect. Thus since the average time is usually better then 9/10, you have Θ(nlogn)
+
+7.4-2)
+
+
+7-2)
+
+7-4)
