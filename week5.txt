@@ -1,0 +1,47 @@
+Michelle Bergin
+Analysis of Algorithms
+
+** P 194: 8.1-4
+    Help
+
+p 197: 8.2-4
+    using the C array you can quickly find how many fall into that range by adding them all up.
+
+** P 200: 8.3-2
+    Insertion Sort, Merge Sort
+        4_a, 3_b, 2_c, 2_d, 1_e
+        3_b, 4_a, 2_c, 2_d, 1_e
+        2_c, 3_b, 4_a, 2_d, 1_e
+        2_c, 2_d, 3_b, 4_a, 1_e
+        1_e, 2_c, 2_d, 3_b, 4_a
+
+        [4_a, 3_b, 2_c] [2_d, 1_e]
+        [4_a, 3_b] [2_c] [2_d] [1_e]
+        [4_a] [3_b] [2_c] [2_d] [1_e]
+        [3_b, 4_a] [2_c, 2_d] [1_e]
+        [2_c, 2_d, 3_b, 4_a] [1_e]
+        [1_e, 2_c, 2_d, 3_b, 4_a]
+
+    ???
+
+** P 204: 8.4-2
+    hmmm... :/
+
+    for i = 0 to n - 1:(n)
+        insertion sort.(n?)
+        is this the n²?
+
+** p 206: 8-3 or 8-4
+    a. You are given an array of integers, where different integers may have different numbers of digits, but the total number of digits over all the integers in the array is n. Show how to sort the array in O(n) time.
+        I get it because if you used radix sort it would be n² time.
+        My first assumption is a bucket sort... :/
+
+    b. You are given an array of strings, where different strings may have different numbers of characters, but the total number of characters over all the strings is n. Show how to sort the strings in O(n) time. (Note that the desired order here is the standard alphabetical order; for example, a < ab < b.)
+        Same as above? I need help...
+
+P 215: 9.1-1
+
+
+p 219: 9.2-1
+P 223: 9.3-8 , 9.3-9
+p 224: 9-2
