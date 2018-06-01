@@ -2,13 +2,23 @@ Michelle Bergin
 Analysis of Algorithms
 
 ** P 194: 8.1-4
-    n * some n/k elements and each n/k_i is greater than n/k_(i+1)
-    So I know that when n is continuesally divided by some number it will take log_k(n) for the time to finish. I am not sure where to go from here.
+    From what I understand based on what Sherri emailed me and with James's help The array is divided by k sub sequences. So if <A, B, C, D> and our K is 2 then <A, B> and <C, D> would be our sub sequence.
+    As we sort each subsequence. Our sort will be klogk each and here is our decision tree based on the entire array based on our sub sequences. Listed are the array locations.
+    If we have 6 elements in our array and K = 2
+                            5:6                     a = <A, B, C, D, E, F>
+                          /     \                   b = <A, B, D, C, F, E>
+                        3:4     4:3                 c = <B, A, D, C, E, F>
+                     /    \     /    \              d = <B, A, C, D, F, E>
+                  1:2    2:1   1:2    2:1
+                   |      |     |      |
+                   a      b     c      d
+
+    To get a fully sorted array we need to compare each element (n) and to finish our array based on the decision tree it will take logk times. nlogk
 
 p 197: 8.2-4
     using the C array you can quickly find how many fall into that range by adding them all up.
 
-** P 200: 8.3-2
+P 200: 8.3-2
     Insertion Sort, Merge Sort
         4_a, 3_b, 2_c, 2_d, 1_e
         3_b, 4_a, 2_c, 2_d, 1_e
@@ -25,20 +35,30 @@ p 197: 8.2-4
 
     ???
 
-** P 204: 8.4-2
-    hmmm... :/
+P 204: 8.4-2
+    From lines 7 and 8 from bucket sort we can see that we have an n loop incompasing another loop (insertion sort). Insertion sort takes n^2 time. I think changing that to counting sort will be better.
 
-    for i = 0 to n - 1:(n)
-        insertion sort.(n?)
-        is this the n²?
-
-** p 206: 8-3 or 8-4
-    a. You are given an array of integers, where different integers may have different numbers of digits, but the total number of digits over all the integers in the array is n. Show how to sort the array in O(n) time.
-        I get it because if you used radix sort it would be n² time.
-        My first assumption is a bucket sort... :/
+p 206: 8-3 or 8-4
+    a.
+    a. mainFunct():                                 bucketSort(A, B):
+        A = all the numbers                             longest = 0
+        B = array of arrays                             for n in A:
+        C = nothing yet                                     if longest < len(str(n)):
+        B = bucketSort(A, B)                                    longest = len(str(n))
+        for each in B:                                  set B to length of longest
+            radixSort(each)                             for n in A:
+        for each in B:                                      B[len(str(n))].append(n)
+            for n in each:                              return B
+                C.append(n)
 
     b. You are given an array of strings, where different strings may have different numbers of characters, but the total number of characters over all the strings is n. Show how to sort the strings in O(n) time. (Note that the desired order here is the standard alphabetical order; for example, a < ab < b.)
-        Same as above? I need help...
+        buffer strings with a's in the front to make them all the same size. then organize by first character going to the last. Even though I have created more characters I still believe that it is in O(n) time
+
+        for word in wordlist:
+            add a's to beginning of each word so they are all the same length
+        for i in range (0, len(wordlist)):
+            .... I need to think about this more
+
 
 P 215: 9.1-1
     So I saw an example of this online which was a big help. How I saw the comparisons being done to find the smallest value was the same:
